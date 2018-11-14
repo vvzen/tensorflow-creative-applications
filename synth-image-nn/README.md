@@ -10,3 +10,13 @@ Please run
 ```python synth_image_nn.py --help```
 
 in order to see all of the available options.
+
+## Examples:
+(CGI artwork by [Alfonso Coppola](http://instagram.com/alfonsocoppolart))
+
+![nn-synth-example.png](nn-synth-example.png)
+
+
+Gif showing the full training:
+![leonalfo.gif](leonalfo.gif)
+
