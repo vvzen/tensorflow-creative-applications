@@ -10,11 +10,11 @@ from useful_stuff import linear
 from libs import gif
 from libs.utils import imcrop_tosquare
 
-# performance stuff
+# Used to check the elapsed time
 import time
 start_time = time.time()
 
-# Save an image using the predicted y
+# Save an image using the predicted y values
 def save_image(y_pred, name):
     clipped_img = np.clip(y_pred.reshape(in_image.shape).astype(np.float32), 0.0, 1.0)
     output_path = os.path.join(args.output_folder, name)
@@ -23,9 +23,9 @@ def save_image(y_pred, name):
 
 # Argument parsing
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--input_image', type=str, help='the path to the input image', required=True)
+parser.add_argument('-i', '--input_image', type=str, help='the path to the input image (REQUIRED)', required=True)
 parser.add_argument('-s', '--image_size', type=int, help='the size at which the input image will be resized')
-parser.add_argument('-o','--output_folder', type=str, help='the path where to save the output image', required=True)
+parser.add_argument('-o','--output_folder', type=str, help='the path where to save the output image (REQUIRED)', required=True)
 parser.add_argument('-b', '--batch_size', type=int, help='set the batch size')
 parser.add_argument('--num_iterations', type=int, help='set the number of iterations')
 parser.add_argument('-n', '--neurons', nargs='+', help='set the number of neurons of the network')
@@ -94,15 +94,6 @@ for layer_i in range(1, len(neurons)):
         scope='layer_{}'.format(layer_i)
     )
     Y_pred = current_input
-
-    # h, W = linear(
-    #     x=X,
-    #     n_output=neurons[layer_i],
-    #     name='linear_layer_{}'.format(layer_i),
-    #     activation=tf.nn.relu if (layer_i+1) < len(neurons) else None,
-    # )
-        
-    # Y_pred = tf.clip_by_value(h, 0, 255)
 
 # MSE: ((y' - y)^2) / N
 # cost = tf.reduce_mean(tf.squared_difference(Y_pred, Y))
