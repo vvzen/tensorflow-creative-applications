@@ -18,5 +18,5 @@ in order to see all of the available options.
 
 
 Gif showing the full training:
-![leonalfo.gif](leonalfo.gif)
 
+![leonalfo.gif](leonalfo.gif)
